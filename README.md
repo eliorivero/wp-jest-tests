@@ -2,6 +2,8 @@
 
 Examplifies how to test JavaScript from a WordPress plugin using Jest.
 
+This repo is a companion to the tutorial [Easy JavaScript unit tests in WordPress with Jest](https://startfunction.com/javascript-tests-wordpress-jest/)
+
 # Installing
 
 Clone this repo and enter its directory.
