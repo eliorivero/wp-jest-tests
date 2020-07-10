@@ -12,15 +12,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
+define( 'WP_JEST_TESTS_VERSION', '1.0.0' );
+
 add_action( 'wp_enqueue_scripts', 'wp_jest_tests_scripts' );
 
 function wp_jest_tests_scripts() {
-    if ( ! function_exists( 'get_plugin_data' ) ) {
-        require_once ABSPATH . 'wp-admin/includes/plugin.php';
-    }
-
-    $plugin_version = get_plugin_data( __FILE__ )['Version'];
-
     $initial_state = rawurlencode( wp_json_encode( array(
         'restUrl' => esc_url_raw( rest_url() ),
         'posts'   => 5,
@@ -28,16 +24,16 @@ function wp_jest_tests_scripts() {
 
     wp_enqueue_style( 
 		'wp-jest-tests',
-		plugins_url( 'front.css', __FILE__ ),
+		plugins_url( 'css/front.css', __FILE__ ),
 		array(),
-		$plugin_version
+		WP_JEST_TESTS_VERSION
 	);
     
     wp_enqueue_script( 
 		'wp-jest-tests',
-		plugins_url( 'front.js', __FILE__ ),
+		plugins_url( 'js/front.js', __FILE__ ),
 		array(),
-		$plugin_version,
+		WP_JEST_TESTS_VERSION,
 		true
 	);
 
